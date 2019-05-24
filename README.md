@@ -75,3 +75,13 @@ sudo dd bs=8m if=backup.img of=/dev/disk2
 ` 生成和还原时间较长,可能需要30～60分钟。`
 
 ## 系统安装备份还原-最小img（macOS）
+
+//TODO
+
+
+## 安装 nodejs
+
+安装gcc-c++ 和 make（不知道是不是必须的）
+```sh
+sudo yum install -y gcc-c++ make
+```
