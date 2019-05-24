@@ -21,11 +21,33 @@ reboot
 
 ## vi 无法识别上下左右和Backspace 
 刚装好系统,使用上下左右会变成abcd
+
 编辑 `/etc/vim/vimrc.tiny` 文件
+
 将 `set compatible` 改为 `set nocompatible`
+
 增加一行 `set backspace=2`
 
+或者直接用 nano 代替
 
+## 连接无线
+```sh
+sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+```
+添加多个network
+
+```
+#隐藏并没有密码
+network={
+    ssid="yourHiddenSSID"
+    scan_ssid=1
+    key_mgmt=NONE
+}
+```
+刷新wifi配置 或 reboot后生效
+```
+wpa_cli -i wlan0 reconfigure
+```
 
 ## 安装nodejs
 下载ARMv7版本的nodejs https://nodejs.org/en/download/ 并解压
