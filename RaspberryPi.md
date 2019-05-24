@@ -19,6 +19,14 @@ sudo apt-get remove fcitx-ui-qimpanel
 reboot
 ```
 
+## vi 无法识别上下左右和Backspace 
+刚装好系统,使用上下左右会变成abcd
+编辑 `/etc/vim/vimrc.tiny` 文件
+将 `set compatible` 改为 `set nocompatible`
+增加一行 `set backspace=2`
+
+
+
 ## 安装nodejs
 下载ARMv7版本的nodejs https://nodejs.org/en/download/ 并解压
 
