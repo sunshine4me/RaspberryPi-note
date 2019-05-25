@@ -49,6 +49,13 @@ network={
 wpa_cli -i wlan0 reconfigure
 ```
 
+## 打开ssh
+
+```
+sudo systemctl enable ssh
+sudo systemctl start ssh
+```
+
 ## 安装nodejs
 下载ARMv7版本的nodejs https://nodejs.org/en/download/ 并解压
 
@@ -79,6 +86,15 @@ sudo raspi-config
 
 Boot Options - B1 Desktop / CLI - B4 Desktop Autologin
 
+## 查看CPU温度
+两种方法
+```
+pi@raspberrypi:~ $ vcgencmd measure_temp
+temp=40.2'C
+
+pi@raspberrypi:~ $ cat /sys/class/thermal/thermal_zone0/temp
+40242
+```
 
 ## docker 
 安装
