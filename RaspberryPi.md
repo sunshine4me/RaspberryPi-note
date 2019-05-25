@@ -3,17 +3,17 @@
 下载 https://www.raspberrypi.org/downloads/raspbian/ 并解压
 
 查看sd卡磁盘路径
-```sh
+```bash
 diskutil list
 ```
 
 安装img镜像到sd卡
-```sh
+```bash
 sudo dd bs=8m if=RaspberryPI.img of=/dev/disk2
 ```
 
 ## 中文输入法无法使用
-```sh
+```bash
 sudo apt remove fcitx-module-kimpanel
 sudo apt-get remove fcitx-ui-qimpanel
 reboot
@@ -31,7 +31,7 @@ reboot
 或者直接用 nano 代替
 
 ## 连接无线
-```sh
+```bash
 sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 添加多个network
@@ -60,7 +60,7 @@ sudo systemctl start ssh
 下载ARMv7版本的nodejs https://nodejs.org/en/download/ 并解压
 
 设置软连接
-```sh
+```bash
 ln -s /usr/software/nodejs/bin/npm   /usr/local/bin/ 
 ln -s /usr/software/nodejs/bin/node   /usr/local/bin/
 ```
@@ -69,7 +69,7 @@ ln -s /usr/software/nodejs/bin/node   /usr/local/bin/
 安装4.x以上的版本会报 `GLIBC_2.27 not found` 的错误，所以使用3.x的版本
 
 设置全局变量 避免下载出错
-```sh
+```bash
 npm config set electron_mirror http://npm.taobao.org/mirrors/electron/
 ```
 
@@ -80,7 +80,7 @@ npm config set electron_mirror http://npm.taobao.org/mirrors/electron/
 首选项 - RaspBerry Pi Configuration - System - To Cli
 
 - 命令行
-```sh
+```bash
 sudo raspi-config
 ```
 
@@ -88,21 +88,20 @@ Boot Options - B1 Desktop / CLI - B4 Desktop Autologin
 
 ## 查看CPU温度
 两种方法
-```
+```bash
 pi@raspberrypi:~ $ vcgencmd measure_temp
 temp=40.2'C
-
 pi@raspberrypi:~ $ cat /sys/class/thermal/thermal_zone0/temp
 40242
 ```
 
 ## docker 
 安装
-```sh
+```bash
 curl -sSL https://get.docker.com/ | sh
 ```
 安装后提示以非root用户无法运行docker。
-```sh
+```bash
 If you would like to use Docker as a non-root user, you should now consider
     adding your user to the "docker" group with something like:
 
@@ -112,11 +111,11 @@ If you would like to use Docker as a non-root user, you should now consider
 
 所以将pi用户添加到 docker 组
 
-```sh
+```bash
 sudo service docker start
 ```
 
 
-```sh
+```bash
 docker login
 ```
