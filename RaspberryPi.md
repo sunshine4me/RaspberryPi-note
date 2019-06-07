@@ -86,6 +86,20 @@ sudo raspi-config
 
 Boot Options - B1 Desktop / CLI - B4 Desktop Autologin
 
+## VNC配置
+```bash
+sudo raspi-config
+```
+
+Boot Options - 5 Interfacing Options - P3 VNC - enabled
+
+启动并查看 vnc 端口
+```bash
+vncserver
+```
+
+MAC 自带的vnc 无法连接不知道怎么搞，所以下载 [vnv viewer](https://www.realvnc.com/en/connect/download/viewer/)
+
 ## 查看CPU温度
 两种方法
 ```bash
@@ -118,4 +132,31 @@ sudo service docker start
 
 ```bash
 docker login
+```
+
+删除容器
+```bash
+docker rm stfpi
+```
+
+启动已有容器
+```bash
+docker start stfpi
+```
+
+启动stf(未完成)
+```bash
+docker run \
+--name stfpi \
+--net host \
+openstf/stf-armv7l \
+stf provider \
+  --name "stfpi01" \
+  --connect-sub tcp://127.0.0.1:7250 \
+  --connect-push tcp://127.0.0.1:7270 \
+  --storage-url http://127.0.0.1/ \
+  --public-ip 127.0.0.1 \
+  --min-port=15000 \
+  --max-port=25000 \
+  --heartbeat-interval 10000 
 ```
