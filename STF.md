@@ -294,5 +294,5 @@ stf provider --name sunshine \
 --connect-push tcp://www.你的域名.com:7270 \
 --min-port=15000 --max-port=25000 --heartbeat-interval 20000 --allow-remote --no-cleanup \
 --storage-url http://www.你的域名.com \
---public-ip www.你的域名.com --screen-ws-url-pattern "ws://www.你的域名.com/d/pi1/<%= serial %>/<%= publicPort %>/"
+--public-ip www.你的域名.com --screen-ws-url-pattern "ws://www.你的域名.com/d/sunshine/<%= serial %>/<%= publicPort %>/"
 ```
