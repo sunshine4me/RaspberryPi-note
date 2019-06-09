@@ -165,34 +165,34 @@ worker_processes 1;
 events {
   worker_connections 1024;
 }
-#47.96.150.211 为主服务的IP,应该可以改为127.0.0.1?
+#192.168.0.8 为主服务的IP,应该可以改为127.0.0.1?
 http {
   upstream stf_app {
-    server 47.96.150.211:7100 max_fails=0;
+    server 192.168.0.8:7100 max_fails=0;
   }
 
   upstream stf_auth {
-    server 47.96.150.211:7101 max_fails=0;
+    server 192.168.0.8:7101 max_fails=0;
   }
 
   upstream stf_storage_apk {
-    server 47.96.150.211:7104 max_fails=0;
+    server 192.168.0.8:7104 max_fails=0;
   }
 
   upstream stf_storage_image {
-    server 47.96.150.211:7105 max_fails=0;
+    server 192.168.0.8:7105 max_fails=0;
   }
 
   upstream stf_storage {
-    server 47.96.150.211:7106 max_fails=0;
+    server 192.168.0.8:7106 max_fails=0;
   }
 
   upstream stf_websocket {
-    server 47.96.150.211:7102 max_fails=0;
+    server 192.168.0.8:7102 max_fails=0;
   }
 
   upstream stf_api {
-    server 47.96.150.211:7103 max_fails=0;
+    server 192.168.0.8:7103 max_fails=0;
   }
 
   types {
