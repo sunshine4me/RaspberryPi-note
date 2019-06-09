@@ -277,7 +277,11 @@ http {
 **暴露 provider 服务器**
 ```bash
 docker run -d --name sunshine --net host openstf/stf-armv7l \
-stf provider --name sunshine --connect-sub tcp://www.你的域名.com:7250 --connect-push tcp://www.你的域名.com:7270 --min-port=15000 --max-port=25000 --heartbeat-interval 20000 --allow-remote --no-cleanup --storage-url http://www.你的域名.com
+stf provider --name sunshine \
+--connect-sub tcp://www.你的域名.com:7250 \
+--connect-push tcp://www.你的域名.com:7270 \
+--min-port=15000 --max-port=25000 --heartbeat-interval 20000 --allow-remote --no-cleanup \
+--storage-url http://www.你的域名.com
 ```
 
 **不暴露 provider 服务器**
@@ -285,6 +289,10 @@ stf provider --name sunshine --connect-sub tcp://www.你的域名.com:7250 --con
 注意:需要配合nginx进行转发
 ```bash
 docker run -d --name sunshine --net host openstf/stf-armv7l \
-stf provider --name sunshine --connect-sub tcp://www.你的域名.com:7250 --connect-push tcp://www.你的域名.com:7270 --min-port=15000 --max-port=25000 --heartbeat-interval 20000 --allow-remote --no-cleanup --storage-url http://www.你的域名.com \
+stf provider --name sunshine \
+--connect-sub tcp://www.你的域名.com:7250 \
+--connect-push tcp://www.你的域名.com:7270 \
+--min-port=15000 --max-port=25000 --heartbeat-interval 20000 --allow-remote --no-cleanup \
+--storage-url http://www.你的域名.com \
 --public-ip www.你的域名.com --screen-ws-url-pattern "ws://www.你的域名.com/d/pi1/<%= serial %>/<%= publicPort %>/"
 ```
