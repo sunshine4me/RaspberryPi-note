@@ -124,39 +124,51 @@ If you would like to use Docker as a non-root user, you should now consider
 ```
 
 所以将pi用户添加到 docker 组
+```bash
+sudo usermod -aG docker pi
+```
+
+
 
 ```bash
 sudo service docker start
 ```
 
-
+登陆docker账号,可以不用
 ```bash
 docker login
 ```
 
 删除容器
 ```bash
-docker rm stfpi
+#查看所有容器,-a 包括停止的
+docker ps -a
+docker rm 容器name/id
 ```
 
-启动已有容器
-```bash
-docker start stfpi
+查看容器详情
+```
+docker inspect 容器name/id
 ```
 
-启动stf(未完成)
+删除image
 ```bash
-docker run \
---name stfpi \
---net host \
-openstf/stf-armv7l \
-stf provider \
-  --name "stfpi01" \
-  --connect-sub tcp://127.0.0.1:7250 \
-  --connect-push tcp://127.0.0.1:7270 \
-  --storage-url http://127.0.0.1/ \
-  --public-ip 127.0.0.1 \
-  --min-port=15000 \
-  --max-port=25000 \
-  --heartbeat-interval 10000 
+docker images
+docker rmi 镜像name/id
+```
+
+启动/停止已有容器
+```bash
+docker start 容器name/id
+docker stop 容器name/id
+```
+
+查看容器日志
+* -f : 跟踪日志输出
+* --since :显示某个开始时间的所有日志
+* -t : 显示时间戳
+* --tail :仅列出最新N条容器日志
+
+```bash
+docker logs -f -t --since="2018-07-01" --tail=10 容器name/id
 ```
