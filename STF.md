@@ -165,34 +165,34 @@ worker_processes 1;
 events {
   worker_connections 1024;
 }
-#192.168.0.8 为主服务的IP,应该可以改为127.0.0.1?
+#如果nginx与服务器不在一台上将127.0.0.1改为服务器IP
 http {
   upstream stf_app {
-    server 192.168.0.8:7100 max_fails=0;
+    server 127.0.0.1:7100 max_fails=0;
   }
 
   upstream stf_auth {
-    server 192.168.0.8:7101 max_fails=0;
+    server 127.0.0.1:7101 max_fails=0;
   }
 
   upstream stf_storage_apk {
-    server 192.168.0.8:7104 max_fails=0;
+    server 127.0.0.1:7104 max_fails=0;
   }
 
   upstream stf_storage_image {
-    server 192.168.0.8:7105 max_fails=0;
+    server 127.0.0.1:7105 max_fails=0;
   }
 
   upstream stf_storage {
-    server 192.168.0.8:7106 max_fails=0;
+    server 127.0.0.1:7106 max_fails=0;
   }
 
   upstream stf_websocket {
-    server 192.168.0.8:7102 max_fails=0;
+    server 127.0.0.1:7102 max_fails=0;
   }
 
   upstream stf_api {
-    server 192.168.0.8:7103 max_fails=0;
+    server 127.0.0.1:7103 max_fails=0;
   }
 
   types {
@@ -269,8 +269,8 @@ http {
     }
   }
 }
-```
 
+```
 
 ### 启动 provider 服务器
 
