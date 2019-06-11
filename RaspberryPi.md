@@ -2,9 +2,10 @@
 
 下载 https://www.raspberrypi.org/downloads/raspbian/ 并解压
 
-查看sd卡磁盘路径
+查看sd卡磁盘路径,并卸载
 ```bash
 diskutil list
+diskutil unmountDisk /dev/disk2
 ```
 
 安装img镜像到sd卡
