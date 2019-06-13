@@ -101,13 +101,13 @@ sleep 1
 
 # 启动 rethinkdb
 echo "启动 rethinkdb"
-docker run -d --name some-rethink -v "/root/rethinkdb_data:/data" --net host rethinkdb rethinkdb
+docker run -d --name some-rethink -v "/root/rethinkdb_data:/data" --net host rethinkdb:2.3 rethinkdb --cache-size 512 --no-update-check
 sleep 3
 
 
 # 初始化数据表,只需要执行一次
 echo "rethinkdb init"
-docker run -d --name stf-migrate ${dockerImage} stf migrate
+docker run -d --name stf-migrate --net host ${dockerImage} stf migrate
 sleep 3
 
 echo "启动 stf app"
@@ -144,7 +144,7 @@ docker run -d --name triproxy-app --net host ${dockerImage} stf triproxy app --b
 sleep 1
 
 echo "启动 stf processor"
-docker run -d --name stf-processer --net host ${dockerImage} stf processor stf-processer --connect-app-dealer tcp://${hostname}:7160 --connect-dev-dealer tcp://${hostname}:7260
+docker run -d --name stf-processer --net host ${dockerImage} stf processor stf-processer --connect-app-dealer tcp://127.0.0.1:7160 --connect-dev-dealer tcp://127.0.0.1:7260
 sleep 1
 
 echo "启动 stf triproxy dev"
@@ -152,7 +152,7 @@ docker run -d --name triproxy-dev --net host ${dockerImage} stf triproxy dev --b
 sleep 1
 
 echo "启动 stf reaper dev"
-docker run -d --name stf-reaper --net host ${dockerImage} stf reaper dev --connect-push tcp://${hostname}:7270 --connect-sub tcp://${hostname}:7150 --heartbeat-timeout 30000
+docker run -d --name stf-reaper --net host ${dockerImage} stf reaper dev --connect-push tcp://127.0.0.1:7270 --connect-sub tcp://127.0.0.1:7150 --heartbeat-timeout 30000
 
 ```
 

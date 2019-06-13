@@ -56,6 +56,11 @@ wpa_cli -i wlan0 reconfigure
 sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
+修改端口 Port 22,改成想要的端口
+```
+sudo vi /etc/ssh/sshd_config
+```
+
 
 ## 安装nodejs
 下载ARMv7版本的nodejs https://nodejs.org/en/download/ 并解压
