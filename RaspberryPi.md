@@ -62,6 +62,29 @@ sudo vi /etc/ssh/sshd_config
 ```
 
 
+## 安装LCD屏幕驱动
+
+安装git
+```bash
+sudo apt-get install git
+```
+
+下载驱动
+```bash
+git clone https://github.com/goodtft/LCD-show.git
+chmod -R 755 LCD-show
+cd LCD-show/
+```
+
+启动LCD
+```bash
+sudo ./LCD35-show
+```
+切换HDMI
+```bash
+sudo ./LCD-hdmi
+```
+
 ## 安装nodejs
 下载ARMv7版本的nodejs https://nodejs.org/en/download/ 并解压
 

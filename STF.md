@@ -99,6 +99,9 @@ echo "删除所有容器"
 docker rm -v $(docker ps -a -q)
 sleep 1
 
+echo "启动nginx"
+docker run -d  --name nginx -v /root/nginx.conf:/etc/nginx/nginx.conf:ro --net host nginx:1.7.10 nginx
+
 # 启动 rethinkdb
 echo "启动 rethinkdb"
 docker run -d --name some-rethink -v "/root/rethinkdb_data:/data" --net host rethinkdb:2.3 rethinkdb --cache-size 512 --no-update-check
@@ -107,7 +110,7 @@ sleep 3
 
 # 初始化数据表,只需要执行一次
 echo "rethinkdb init"
-docker run -d --name stf-migrate --net host ${dockerImage} stf migrate
+docker run --rm --name stf-migrate --net host ${dockerImage} stf migrate
 sleep 3
 
 echo "启动 stf app"
@@ -159,7 +162,7 @@ docker run -d --name stf-reaper --net host ${dockerImage} stf reaper dev --conne
 ### nginx 配置
 
 ```
-#daemon off
+daemon off;
 worker_processes 1;
 
 events {
@@ -210,7 +213,7 @@ http {
 
   server {
     listen 80;
-    server_name www.你的域名.com;
+#    server_name www.你的域名.com;
     keepalive_timeout 70; 
 #    resolver 114.114.114.114 8.8.8.8 valid=300s;
 #    resolver_timeout 10s;
