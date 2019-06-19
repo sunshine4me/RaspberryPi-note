@@ -115,6 +115,16 @@ sudo raspi-config
 
 Boot Options - B1 Desktop / CLI - B4 Desktop Autologin
 
+RaspberryPi Lite 系统安装图形界面(未验证)
+```
+sudo apt-get update
+sudo apt-get install xorg
+sudo apt-get install lxde openbox
+sudo apt-get install pix-icons pix-plym-splash pixel-wallpaper
+sudo apt-get install raspberrypi-ui-mods
+sudo reboot
+```
+
 ## VNC配置
 ```bash
 sudo raspi-config
