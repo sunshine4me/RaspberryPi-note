@@ -88,10 +88,15 @@ sudo ./LCD-hdmi
 ## 安装nodejs
 下载ARMv7版本的nodejs https://nodejs.org/en/download/ 并解压
 
+```bash
+wget https://nodejs.org/dist/v8.11.3/node-v8.11.3-linux-armv7l.tar.xz
+tar -xvf node-v8.11.3-linux-armv7l.tar.xz node-v8.11.3-linux-armv7l
+```
+
 设置软连接
 ```bash
-ln -s /usr/software/nodejs/bin/npm   /usr/local/bin/ 
-ln -s /usr/software/nodejs/bin/node   /usr/local/bin/
+ln -s /home/pi/node-v8.11.3-linux-armv7l/bin/npm   /usr/local/bin/ 
+ln -s /home/pi/node-v8.11.3-linux-armv7l/bin/node   /usr/local/bin/
 ```
 
 ## 关于electron
