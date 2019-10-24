@@ -12,6 +12,13 @@ diskutil unmountDisk /dev/disk2
 ```bash
 sudo dd bs=8m if=RaspberryPI.img of=/dev/disk2
 ```
+## 磁盘扩容
+在重新安装或还原系统后，发现磁盘空间未达到sd卡最大容量可以通过以下命令进行扩充
+
+```
+raspi-config --expand-rootfs
+```
+
 
 ## 中文输入法无法使用
 ```bash
